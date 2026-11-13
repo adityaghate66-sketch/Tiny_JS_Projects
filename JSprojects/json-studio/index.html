@@ -35,6 +35,67 @@
             </div>
         </section>
 
+        <!-- Stats Section -->
+        <section class="stats-section" id="stats-section" style="display: none;">
+            <h2>JSON Statistics</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-value" id="stat-objects">0</div>
+                    <div class="stat-label">Objects</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="stat-arrays">0</div>
+                    <div class="stat-label">Arrays</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="stat-depth">0</div>
+                    <div class="stat-label">Max Depth</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="stat-keys">0</div>
+                    <div class="stat-label">Total Keys</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tree Viewer Section -->
+        <section class="tree-section" id="tree-section" style="display: none;">
+            <h2>JSON Tree Viewer</h2>
+            <div class="tree-controls">
+                <button class="btn" id="expand-all-btn">Expand All</button>
+                <button class="btn" id="collapse-all-btn">Collapse All</button>
+            </div>
+            <div id="json-tree" class="json-tree"></div>
+        </section>
+
+        <!-- Search Section -->
+        <section class="search-section" id="search-section" style="display: none;">
+            <input type="text" id="json-search" placeholder="Search in JSON...">
+            <div class="search-actions">
+                <button class="action-btn" id="clear-search">Clear</button>
+            </div>
+        </section>
+
+        <!-- Compare Section -->
+        <section class="compare-section" id="compare-section" style="display: none;">
+            <h2>Compare JSON</h2>
+            <textarea id="compare-json1" placeholder="First JSON object..." spellcheck="false"></textarea>
+            <div class="compare-splitter"></div>
+            <textarea id="compare-json2" placeholder="Second JSON object..." spellcheck="false"></textarea>
+            <button class="btn" id="compare-btn">Compare</button>
+            <div id="compare-results" class="compare-results"></div>
+        </section>
+
+        <!-- Sample Data Section -->
+        <section class="samples-section">
+            <h2>Sample Datasets</h2>
+            <div class="sample-buttons">
+                <button class="btn" data-sample="user">User Profile</button>
+                <button class="btn" data-sample="product">Product Catalog</button>
+                <button class="btn" data-sample="blog">Blog Post</button>
+            </div>
+        </section>
+
         <!-- Actions Section -->
         <section class="actions-section">
             <h2>Actions</h2>
