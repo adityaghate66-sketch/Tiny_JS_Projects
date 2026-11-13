@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Developer's Dashboard | TinyJS Tools</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1>🛠️ Developer's Dashboard</h1>
+        <p>Collection of Tiny JavaScript Tools</p>
+        <button id="theme-toggle" class="theme-btn">🌙 Dark Mode</button>
+    </header>
+
+    <main>
+        <section class="dashboard-grid">
+            <div class="tool-card" data-tool="age-calculator">
+                <h2>📅 Age Calculator</h2>
+                <p>Calculate age from birthdate</p>
+                <button class="open-tool">Open Tool</button>
+            </div>
+
+            <div class="tool-card" data-tool="temp-converter">
+                <h2>🌡️ Temperature Converter</h2>
+                <p>Celsius, Fahrenheit, Kelvin</p>
+                <button class="open-tool">Open Tool</button>
+            </div>
+
+            <div class="tool-card" data-tool="weight-converter">
+                <h2>⚖️ Weight Converter</h2>
+                <p>Kg, Lbs, Grams conversion</p>
+                <button class="open-tool">Open Tool</button>
+            </div>
+
+            <div class="tool-card" data-tool="tip-calculator">
+                <h2>💰 Tip Calculator</h2>
+                <p>Bill + Tip calculation</p>
+                <button class="open-tool">Open Tool</button>
+            </div>
+
+            <div class="tool-card" data-tool="image-slider">
+                <h2>🖼️ Image Slider</h2>
+                <p>Interactive carousel</p>
+                <button class="open-tool">Open Tool</button>
+            </div>
+
+            <div class="tool-card" data-tool="random-multipliers">
+                <h2>🔢 Random Multipliers</h2>
+                <p>Number generation tool</p>
+                <button class="open-tool">Open Tool</button>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Built with ❤️ for GSoC 2027 Prep</p>
+    </footer>
+
+    <script src="dashboard.js"></script>
+</body>
+</html>
