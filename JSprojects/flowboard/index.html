@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FlowBoard - Task Manager</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="logo">FlowBoard</div>
+        <h1>Task Management</h1>
+        <p>Organize your work with Kanban boards</p>
+    </header>
+
+    <main>
+        <!-- Add Task Section -->
+        <section class="add-task-section">
+            <h2>Add New Task</h2>
+            <form id="task-form">
+                <input type="text" id="task-title" placeholder="Task title..." required>
+                <select id="task-priority">
+                    <option value="low">Low Priority</option>
+                    <option value="medium">Medium Priority</option>
+                    <option value="high">High Priority</option>
+                </select>
+                <input type="date" id="task-due">
+                <button type="submit" class="btn-add-task">Add Task</button>
+            </form>
+        </section>
+
+        <!-- Kanban Board -->
+        <div class="board">
+            <div class="column" data-column="todo">
+                <h3>To Do</h3>
+                <div class="tasks-container" id="todo-tasks">
+                    <!-- Tasks will be populated here -->
+                </div>
+            </div>
+
+            <div class="column" data-column="in-progress">
+                <h3>In Progress</h3>
+                <div class="tasks-container" id="in-progress-tasks">
+                    <!-- Tasks will be populated here -->
+                </div>
+            </div>
+
+            <div class="column" data-column="completed">
+                <h3>Completed</h3>
+                <div class="tasks-container" id="completed-tasks">
+                    <!-- Tasks will be populated here -->
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Toast Notifications -->
+    <div id="toast-container" class="toast-container"></div>
+
+    <footer>
+        <p>FlowBoard - Drag-and-drop task management</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
