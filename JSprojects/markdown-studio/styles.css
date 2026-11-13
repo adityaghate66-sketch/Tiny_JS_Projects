@@ -1,0 +1,454 @@
+/* Markdown Studio - Writing Workspace */
+
+:root {
+    --primary: #2563eb;
+    --primary-dark: #1d4ed8;
+    --success: #10b981;
+    --danger: #ef4444;
+    --info: #8b5cf6;
+    --bg-primary: #ffffff;
+    --bg-secondary: #f8fafc;
+    --text-primary: #1e293b;
+    --text-secondary: #64748b;
+    --card-bg: #ffffff;
+    --card-shadow: rgba(0, 0, 0, 0.1);
+    --editor-bg: #f8fafc;
+    --preview-bg: #ffffff;
+    --code-bg: #f1f5f9;
+}
+
+:root[data-theme="dark"] {
+    --primary: #3b82f6;
+    --success: #34d399;
+    --danger: #f87171;
+    --info: #a78bfa;
+    --bg-primary: #0f172a;
+    --bg-secondary: #111827;
+    --card-bg: #111827;
+    --card-shadow: rgba(0, 0, 0, 0.3);
+    --editor-bg: #111827;
+    --preview-bg: #0f172a;
+    --code-bg: #1e293b;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    transition: background 0.3s, color 0.3s;
+    min-height: 100vh;
+}
+
+header {
+    background: linear-gradient(135deg, var(--primary), var(--info));
+    color: white;
+    text-align: center;
+    padding: 2rem;
+    margin-bottom: 2rem;
+}
+
+header .logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+header h1 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+header p {
+    opacity: 0.9;
+    font-size: 0.9rem;
+}
+
+main {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+/* Toolbar */
+.toolbar {
+    background: var(--card-bg);
+    border-radius: 12px;
+    padding: 0.75rem;
+    box-shadow: 0 4px 6px var(--card-shadow);
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.toolbar-btn {
+    background: var(--bg-secondary);
+    border: 1px solid var(--card-bg);
+    border-radius: 6px;
+    padding: 0.5rem;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.2s;
+}
+
+.toolbar-btn:hover {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+}
+
+.toolbar-btn strong,
+.toolbar-btn em {
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.toolbar-btn code {
+    font-family: 'Fira Code', monospace;
+    background: var(--code-bg);
+    padding: 0 0.25rem;
+    border-radius: 4px;
+}
+
+/* Editor Container */
+.editor-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+
+.editor-section,
+.preview-section {
+    background: var(--card-bg);
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 6px var(--card-shadow);
+}
+
+.editor-section h2,
+.preview-section h2 {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+    border-bottom: 2px solid var(--primary);
+    padding-bottom: 0.5rem;
+}
+
+.editor-actions {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.action-btn {
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: background 0.3s;
+}
+
+.action-btn:hover {
+    background: var(--primary-dark);
+}
+
+.editor-wrapper {
+    position: relative;
+}
+
+#markdown-input {
+    width: 100%;
+    min-height: 500px;
+    padding: 1.5rem;
+    border: 2px solid var(--code-bg);
+    border-radius: 8px;
+    font-family: 'Fira Code', 'Monaco', 'Menlo', monospace;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    resize: vertical;
+    background: var(--editor-bg);
+    color: var(--text-primary);
+    transition: border-color 0.3s;
+}
+
+#markdown-input:focus {
+    outline: none;
+    border-color: var(--primary);
+}
+
+#empty-state {
+    position: absolute;
+    top: 1.5rem;
+    left: 1.5rem;
+    right: 1.5rem;
+    bottom: 1.5rem;
+    pointer-events: none;
+    opacity: 0.6;
+    text-align: center;
+}
+
+#empty-state.hidden {
+    display: none;
+}
+
+#markdown-input:placeholder-shown + #empty-state {
+    opacity: 0.6;
+}
+
+.preview-wrapper {
+    min-height: 500px;
+    padding: 1.5rem;
+    border: 2px solid var(--code-bg);
+    border-radius: 8px;
+    font-family: 'Fira Code', 'Monaco', 'Menlo', monospace;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    overflow-y: auto;
+    background: var(--preview-bg);
+    color: var(--text-primary);
+}
+
+/* Stats Section */
+.stats-section {
+    background: var(--card-bg);
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 6px var(--card-shadow);
+}
+
+.stats-section h2 {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+    border-bottom: 2px solid var(--primary);
+    padding-bottom: 0.5rem;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 1rem;
+}
+
+.stat-card {
+    background: var(--bg-secondary);
+    border-radius: 8px;
+    padding: 1rem;
+    text-align: center;
+}
+
+.stat-value {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--primary);
+}
+
+.stat-label {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    margin-top: 0.25rem;
+}
+
+/* Preview Styling */
+#markdown-preview h1 { font-size: 2rem; margin: 1rem 0 0.5rem; }
+#markdown-preview h2 { font-size: 1.5rem; margin: 1rem 0 0.5rem; }
+#markdown-preview h3 { font-size: 1.25rem; margin: 1rem 0 0.5rem; }
+#markdown-preview h4 { font-size: 1rem; margin: 1rem 0 0.5rem; font-weight: 600; }
+#markdown-preview h5 { font-size: 0.875rem; margin: 1rem 0 0.5rem; font-weight: 600; }
+#markdown-preview h6 { font-size: 0.75rem; margin: 1rem 0 0.5rem; font-weight: 600; }
+
+#markdown-preview p { margin: 0.75rem 0; }
+
+#markdown-preview ul, #markdown-preview ol {
+    margin: 0.75rem 0;
+    padding-left: 2rem;
+}
+
+#markdown-preview li {
+    margin: 0.25rem 0;
+}
+
+#markdown-preview code {
+    background: var(--code-bg);
+    padding: 0.2rem 0.4rem;
+    border-radius: 4px;
+    font-family: 'Fira Code', monospace;
+}
+
+#markdown-preview pre {
+    background: var(--code-bg);
+    padding: 1rem;
+    border-radius: 8px;
+    overflow-x: auto;
+    margin: 1rem 0;
+}
+
+#markdown-preview pre code {
+    background: none;
+    padding: 0;
+}
+
+#markdown-preview blockquote {
+    border-left: 4px solid var(--primary);
+    padding-left: 1.5rem;
+    margin: 1rem 0;
+    color: var(--text-secondary);
+}
+
+#markdown-preview a {
+    color: var(--primary);
+    text-decoration: underline;
+}
+
+#markdown-preview strong {
+    font-weight: 700;
+}
+
+#markdown-preview em {
+    font-style: italic;
+}
+
+hr {
+    margin: 1.5rem 0;
+    border: none;
+    border-top: 1px solid var(--code-border);
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    margin: 1rem 0;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+}
+
+th, td {
+    border: 1px solid var(--code-border);
+    padding: 0.75rem;
+    text-align: left;
+}
+
+th {
+    background: var(--bg-secondary);
+    font-weight: 600;
+}
+
+/* Toast Notifications */
+.toast-container {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.toast {
+    background: var(--card-bg);
+    color: var(--text-primary);
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px var(--card-shadow);
+    animation: slideIn 0.3s ease-out;
+    min-width: 200px;
+    border-left: 4px solid var(--info);
+}
+
+.toast.success {
+    border-left-color: var(--success);
+}
+
+.toast.error {
+    border-left-color: var(--danger);
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+footer {
+    text-align: center;
+    padding: 1.5rem;
+    margin-top: 2rem;
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+}
+
+/* Responsive Design */
+@media (min-width: 1024px) {
+    .editor-container {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 1024px) {
+    .editor-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    header {
+        padding: 1.5rem;
+    }
+
+    header h1 {
+        font-size: 1.25rem;
+    }
+
+    main {
+        padding: 0 1rem;
+    }
+
+    section {
+        padding: 1rem;
+    }
+
+    .editor-section,
+    .preview-section {
+        padding: 1rem;
+    }
+
+    #markdown-input,
+    #markdown-preview {
+        padding: 1rem;
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .toolbar {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}

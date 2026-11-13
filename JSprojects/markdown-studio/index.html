@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Markdown Studio - Writing Workspace</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="logo">Markdown Studio</div>
+        <h1>Live Markdown Editor</h1>
+        <p>Write and preview Markdown documents</p>
+    </header>
+
+    <main>
+        <!-- Toolbar -->
+        <div class="toolbar">
+            <button class="toolbar-btn" data-action="bold" title="Bold (Ctrl+B)"><strong>B</strong></button>
+            <button class="toolbar-btn" data-action="italic" title="Italic (Ctrl+I)"><em>I</em></button>
+            <button class="toolbar-btn" data-action="link" title="Insert Link">🔗</button>
+            <button class="toolbar-btn" data-action="code" title="Insert Code">`</button>
+            <button class="toolbar-btn" data-action="list" title="Insert List">📋</button>
+            <button class="toolbar-btn" data-action="heading" title="Insert Heading">H</button>
+        </div>
+
+        <div class="editor-container">
+            <!-- Editor Side -->
+            <div class="editor-section">
+                <h2>Editor</h2>
+                <div class="editor-actions">
+                    <button class="action-btn" id="save-btn">💾 Save</button>
+                    <button class="action-btn" id="download-btn">📥 Download</button>
+                </div>
+                <div class="editor-wrapper">
+                    <textarea id="markdown-input" placeholder="Start writing in Markdown..." spellcheck="false"></textarea>
+                    <div id="empty-state" class="empty-state">
+                        <p>Welcome to Markdown Studio!</p>
+                        <p>Start typing to see live preview...</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Preview Side -->
+            <div class="preview-section">
+                <h2>Preview</h2>
+                <div class="preview-wrapper" id="markdown-preview">
+                    <p>Type your markdown here to see preview...</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Stats Section -->
+        <section class="stats-section">
+            <div class="stat-card">
+                <div class="stat-value" id="char-count">0</div>
+                <div class="stat-label">Characters</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="word-count">0</div>
+                <div class="stat-label">Words</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="line-count">0</div>
+                <div class="stat-label">Lines</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="reading-time">0 min</div>
+                <div class="stat-label">Reading Time</div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Toast Notifications -->
+    <div id="toast-container" class="toast-container"></div>
+
+    <footer>
+        <p>Markdown Studio - Live Markdown Editor</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
