@@ -10,6 +10,7 @@
 <body>
     <header>
         <div class="logo">SpendWise</div>
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">🌓</button>
         <h1>Smart Expense Tracker</h1>
         <p>Track your income, expenses, and savings</p>
     </header>
@@ -29,7 +30,40 @@
                 <h3>Total Expenses</h3>
                 <div class="amount" id="total-expenses">$0.00</div>
             </div>
+            <div class="card budget-card">
+                <h3>Monthly Budget</h3>
+                <div class="amount" id="monthly-budget">$0.00</div>
+                <input type="number" id="budget-input" placeholder="Set budget" step="0.01">
+                <button id="set-budget" class="btn-set-budget">Set</button>
+            </div>
         </div>
+
+        <!-- Budget Progress -->
+        <section class="budget-progress" id="budget-progress-section" style="display: none;">
+            <div class="budget-info">
+                <h3>Expense Progress</h3>
+                <span class="progress-text" id="progress-text">$0.00 / $0.00</span>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progress-fill"></div>
+            </div>
+            <div class="warning-message" id="warning-message"></div>
+        </section>
+
+        <!-- Analytics Charts Section -->
+        <section class="analytics-section">
+            <h2>Analytics</h2>
+            <div class="chart-container">
+                <div class="chart-wrapper">
+                    <h3>Monthly Spending Trends</h3>
+                    <canvas id="trend-chart" width="400" height="200"></canvas>
+                </div>
+                <div class="chart-wrapper">
+                    <h3>Category Breakdown</h3>
+                    <canvas id="category-chart" width="400" height="200"></canvas>
+                </div>
+            </div>
+        </section>
 
         <!-- Add Transaction Form -->
         <section class="add-transaction">
@@ -76,12 +110,22 @@
                 </div>
             </div>
         </section>
+
+        <!-- Export Section -->
+        <section class="export-section">
+            <h2>Export Data</h2>
+            <button id="export-csv" class="btn-export">Export to CSV</button>
+        </section>
     </main>
+
+    <!-- Toast Notifications -->
+    <div id="toast-container" class="toast-container"></div>
 
     <footer>
         <p>SpendWise - Smart Expense Tracker</p>
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="app.js"></script>
 </body>
 </html>
