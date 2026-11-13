@@ -30,6 +30,30 @@
             </form>
         </section>
 
+        <!-- Search & Actions Section -->
+        <section class="search-section" style="display: none;">
+            <input type="text" id="search-tasks" placeholder="Search tasks...">
+            <div class="search-actions">
+                <button class="action-btn" id="undo-btn">↶ Undo</button>
+                <button class="action-btn" id="redo-btn">↷ Redo</button>
+            </div>
+        </section>
+
+        <!-- Analytics Section -->
+        <section class="analytics-section" id="analytics-section">
+            <h2>Task Completion</h2>
+            <div id="analytics-content"></div>
+        </section>
+
+        <!-- Export/Import Section -->
+        <section class="export-section">
+            <h2>Data Management</h2>
+            <div class="export-buttons">
+                <button class="btn" id="export-btn">💾 Export Data</button>
+                <button class="btn" id="import-btn">📥 Import Data</button>
+            </div>
+        </section>
+
         <!-- Kanban Board -->
         <div class="board">
             <div class="column" data-column="todo">

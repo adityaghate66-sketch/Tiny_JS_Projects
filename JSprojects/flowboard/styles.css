@@ -1,4 +1,5 @@
 /* FlowBoard - Drag-and-Drop Task Manager */
+/* Phase 2: Advanced Functionality */
 
 :root {
     --primary: #0ea5e9;
@@ -19,18 +20,33 @@
 }
 
 :root[data-theme="dark"] {
-    --primary: #38bdf8;
+    --primary: #0ea5e9;
     --success: #34d399;
     --danger: #f87171;
     --warning: #fbbf24;
-    --info: #a78bfa;
+    --info: #8b5cf6;
     --bg-primary: #1e293b;
     --bg-secondary: #111827;
     --card-bg: #1e293b;
     --card-shadow: rgba(0, 0, 0, 0.3);
-    --todo-bg: #1e3a5f;
-    --inprogress-bg: #2a2a2a;
-    --completed-bg: #1a3c1a;
+    --todo-bg: #1a3a4f;
+    --inprogress-bg: #2a2a1a;
+    --completed-bg: #1a3a1a;
+}
+
+:root[data-theme="dark"] {
+    --primary: #0ea5e9;
+    --success: #34d399;
+    --danger: #f87171;
+    --warning: #fbbf24;
+    --info: #8b5cf6;
+    --bg-primary: #1e293b;
+    --bg-secondary: #111827;
+    --card-bg: #1e293b;
+    --card-shadow: rgba(0, 0, 0, 0.3);
+    --todo-bg: #1a3a4f;
+    --inprogress-bg: #2a2a1a;
+    --completed-bg: #1a3a1a;
 }
 
 * {
@@ -75,6 +91,9 @@ main {
     max-width: 1400px;
     margin: 0 auto;
     padding: 0 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
 }
 
 .add-task-section {
@@ -82,11 +101,10 @@ main {
     border-radius: 12px;
     padding: 1.5rem;
     box-shadow: 0 4px 6px var(--card-shadow);
-    margin-bottom: 2rem;
 }
 
 .add-task-section h2 {
-    font-size: 1.25rem;
+    font-size: 1.1rem;
     margin-bottom: 1rem;
     color: var(--text-primary);
 }
@@ -119,10 +137,7 @@ main {
     min-width: 200px;
 }
 
-#task-priority {
-    min-width: 150px;
-}
-
+#task-priority,
 #task-due {
     min-width: 150px;
 }
@@ -141,6 +156,105 @@ main {
 
 .btn-add-task:hover {
     background: var(--primary-dark);
+}
+
+/* Search Section */
+.search-section {
+    background: var(--card-bg);
+    border-radius: 12px;
+    padding: 1rem 1.5rem;
+    box-shadow: 0 4px 6px var(--card-shadow);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#search-tasks {
+    flex: 1;
+    padding: 0.75rem;
+    border: 2px solid #e5e7eb;
+    border-radius: 8px;
+    font-size: 1rem;
+    background: white;
+}
+
+#search-tasks:focus {
+    outline: none;
+    border-color: var(--primary);
+}
+
+.search-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+/* Analytics Section */
+.analytics-section {
+    background: var(--card-bg);
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 6px var(--card-shadow);
+}
+
+.analytics-section h2 {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+}
+
+.stat-card {
+    background: var(--bg-secondary);
+    border-radius: 8px;
+    padding: 1rem;
+    text-align: center;
+}
+
+.stat-value {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--primary);
+}
+
+.stat-label {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin-top: 0.25rem;
+}
+
+/* Export Section */
+.export-section {
+    background: var(--card-bg);
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 6px var(--card-shadow);
+}
+
+.export-section h2 {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+}
+
+.export-buttons {
+    display: flex;
+    gap: 0.75rem;
+}
+
+.export-buttons .btn {
+    flex: 1;
+    min-width: 120px;
+    padding: 0.75rem;
+    font-size: 0.9rem;
+}
+
+.export-buttons .btn:active {
+    transform: scale(0.98);
 }
 
 /* Board */
@@ -172,7 +286,7 @@ main {
 }
 
 .column h3 {
-    font-size: 1.1rem;
+    font-size: 1rem;
     font-weight: 600;
     margin-bottom: 1rem;
     padding-bottom: 0.5rem;
@@ -380,7 +494,8 @@ footer {
         font-size: 1.25rem;
     }
 
-    .add-task-section {
+    .add-task-section,
+    .analytics-section {
         padding: 1rem;
     }
 
@@ -395,7 +510,18 @@ footer {
         flex: 1;
     }
 
-    .column {
-        min-height: 400px;
+    .search-section {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .stats-grid {
+        grid-template-columns: 1fr;
     }
 }
