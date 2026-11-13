@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON Studio - Developer Toolkit</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="logo">JSON Studio</div>
+        <h1>Developer JSON Toolkit</h1>
+        <p>Format, validate, and analyze JSON data</p>
+    </header>
+
+    <main>
+        <!-- Input Section -->
+        <section class="input-section">
+            <h2>JSON Input</h2>
+            <div class="input-container">
+                <textarea id="json-input" placeholder="Paste your JSON here..." spellcheck="false"></textarea>
+                <div class="input-actions">
+                    <button class="action-btn" id="clear-input">Clear</button>
+                    <button class="action-btn" id="reset-input">Reset</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Validation Section -->
+        <section class="validation-section">
+            <h2>Validation</h2>
+            <div class="validation-result" id="validation-result">
+                <span class="status" id="validation-status">Enter JSON to validate</span>
+            </div>
+        </section>
+
+        <!-- Actions Section -->
+        <section class="actions-section">
+            <h2>Actions</h2>
+            <div class="action-buttons">
+                <button class="btn" id="beautify-btn">🎨 Beautify</button>
+                <button class="btn" id="minify-btn">📦 Minify</button>
+                <button class="btn" id="copy-btn">📋 Copy</button>
+                <button class="btn" id="download-btn">💾 Download</button>
+            </div>
+        </section>
+
+        <!-- Output Section -->
+        <section class="output-section">
+            <h2>Formatted Output</h2>
+            <div class="output-container">
+                <textarea id="json-output" readonly spellcheck="false"></textarea>
+            </div>
+        </section>
+    </main>
+
+    <!-- Toast Notifications -->
+    <div id="toast-container" class="toast-container"></div>
+
+    <footer>
+        <p>JSON Studio - Developer JSON Toolkit</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
