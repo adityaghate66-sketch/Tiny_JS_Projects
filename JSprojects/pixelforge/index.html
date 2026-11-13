@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PixelForge - Browser Image Editor</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="logo">PixelForge</div>
+        <h1>Browser-Based Image Editor</h1>
+        <p>Edit images directly in your browser - no uploads required</p>
+    </header>
+
+    <main>
+        <!-- Control Panel -->
+        <div class="control-panel">
+            <section class="upload-section">
+                <h2>Upload Image</h2>
+                <div class="upload-area" id="upload-area">
+                    <div class="upload-icon">📷</div>
+                    <p>Click or drag image here</p>
+                    <p class="file-types">Supports: JPEG, PNG, WebP</p>
+                    <input type="file" id="image-input" accept="image/*" class="file-input">
+                </div>
+            </section>
+
+            <!-- Image Adjustments -->
+            <section class="adjustments-section" id="adjustments-section" style="display: none;">
+                <h2>Adjustments</h2>
+
+                <div class="control-group">
+                    <label for="brightness">Brightness: <span id="brightness-value">100%</span></label>
+                    <input type="range" id="brightness" min="0" max="200" value="100">
+                </div>
+
+                <div class="control-group">
+                    <label for="contrast">Contrast: <span id="contrast-value">100%</span></label>
+                    <input type="range" id="contrast" min="0" max="200" value="100">
+                </div>
+
+                <div class="control-group">
+                    <label for="saturation">Saturation: <span id="saturation-value">100%</span></label>
+                    <input type="range" id="saturation" min="0" max="200" value="100">
+                </div>
+            </section>
+
+            <!-- Filters -->
+            <section class="filters-section" id="filters-section" style="display: none;">
+                <h2>Filters</h2>
+                <div class="filter-buttons">
+                    <button class="filter-btn" data-filter="none" id="normal-btn">Normal</button>
+                    <button class="filter-btn" data-filter="grayscale" id="grayscale-btn">Grayscale</button>
+                    <button class="filter-btn" data-filter="sepia" id="sepia-btn">Sepia</button>
+                    <button class="filter-btn blur" data-filter="blur" id="blur-btn">Blur</button>
+                </div>
+            </section>
+
+            <!-- Transformations -->
+            <section class="transform-section" id="transform-section" style="display: none;">
+                <h2>Transform</h2>
+                <div class="transform-buttons">
+                    <button class="transform-btn" id="rotate-btn">🔄 Rotate 90°</button>
+                    <button class="transform-btn" id="flip-btn">↔️ Flip Horizontal</button>
+                </div>
+            </section>
+
+            <!-- Actions -->
+            <section class="actions-section" id="actions-section" style="display: none;">
+                <h2>Actions</h2>
+                <div class="action-buttons">
+                    <button class="action-btn" id="undo-btn">↶ Undo</button>
+                    <button class="action-btn" id="redo-btn">↷ Redo</button>
+                    <button class="action-btn" id="reset-btn">🔄 Reset</button>
+                    <button class="action-btn download-btn" id="download-btn">💾 Download</button>
+                </div>
+            </section>
+        </div>
+
+        <!-- Canvas Area -->
+        <div class="canvas-container">
+            <canvas id="editor-canvas" width="800" height="600"></canvas>
+            <div class="canvas-overlay" id="canvas-overlay" style="display: none;">
+                <p>Image Loaded - Use controls to edit</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Toast Notifications -->
+    <div id="toast-container" class="toast-container"></div>
+
+    <footer>
+        <p>PixelForge - Browser Image Editor | All editing done locally</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>

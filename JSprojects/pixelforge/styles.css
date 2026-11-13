@@ -1,0 +1,329 @@
+/* PixelForge - Browser Image Editor */
+
+:root {
+    --primary: #0f172a;
+    --primary-light: #1e293b;
+    --secondary: #64748b;
+    --accent: #8b5cf6;
+    --success: #10b981;
+    --danger: #ef4444;
+    --info: #3b82f6;
+    --bg-primary: #0f172a;
+    --bg-secondary: #111827;
+    --card-bg: #1e293b;
+    --text-primary: #f8fafc;
+    --text-secondary: #cbd5e1;
+    --border-color: #334155;
+}
+
+:root[data-theme="dark"] {
+    --primary: #0f172a;
+    --bg-primary: #0f172a;
+    --card-bg: #111827;
+    --text-primary: #f8fafc;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    min-height: 100vh;
+}
+
+header {
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    color: white;
+    text-align: center;
+    padding: 2rem;
+    margin-bottom: 2rem;
+}
+
+header .logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+header h1 {
+    font-size: 1.5rem;
+    margin-bottom: 0.75rem;
+}
+
+header p {
+    opacity: 0.9;
+    font-size: 0.9rem;
+}
+
+main {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+}
+
+.control-panel {
+    background: var(--card-bg);
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    max-width: 350px;
+    height: fit-content;
+}
+
+.canvas-container {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    background: var(--card-bg);
+}
+
+#editor-canvas {
+    width: 100%;
+    height: auto;
+    display: block;
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+}
+
+.canvas-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(15, 23, 42, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-secondary);
+    border-radius: 12px;
+}
+
+section {
+    margin-bottom: 1.5rem;
+}
+
+section h2 {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.upload-section {
+    text-align: center;
+}
+
+.upload-area {
+    border: 2px dashed var(--secondary);
+    border-radius: 12px;
+    padding: 2rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.upload-area:hover {
+    border-color: var(--accent);
+    background: rgba(139, 92, 246, 0.1);
+}
+
+.upload-area.drag-over {
+    border-color: var(--success);
+    background: rgba(16, 185, 129, 0.1);
+}
+
+.upload-icon {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+}
+
+.file-types {
+    color: var(--secondary);
+    font-size: 0.8rem;
+    margin-top: 0.5rem;
+}
+
+.file-input {
+    display: none;
+}
+
+.control-group {
+    margin-bottom: 1rem;
+}
+
+.control-group label {
+    display: block;
+    font-size: 0.85rem;
+    margin-bottom: 0.25rem;
+    color: var(--text-secondary);
+}
+
+.control-group input[type="range"] {
+    width: 100%;
+    -webkit-appearance: none;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+    height: 8px;
+    outline: none;
+}
+
+.control-group input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--accent);
+    cursor: pointer;
+    border: 2px solid white;
+}
+
+.control-group input[type="range"]::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--accent);
+    cursor: pointer;
+    border: 2px solid white;
+}
+
+.filter-buttons, .transform-buttons, .action-buttons {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 0.5rem;
+}
+
+.filter-btn, .transform-btn, .action-btn {
+    padding: 0.75rem;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background: var(--primary-light);
+    color: var(--text-primary);
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.3s;
+    text-align: center;
+}
+
+.filter-btn:hover, .transform-btn:hover, .action-btn:hover {
+    background: var(--accent);
+    border-color: var(--accent);
+}
+
+.filter-btn.blur {
+    background: linear-gradient(45deg, var(--danger), var(--warning));
+    border-color: var(--danger);
+}
+
+.filter-btn.blur:hover {
+    opacity: 0.9;
+}
+
+.download-btn {
+    background: var(--success);
+    border-color: var(--success);
+}
+
+.download-btn:hover {
+    background: #059669;
+    border-color: #059669;
+}
+
+/* Toast Notifications */
+.toast-container {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.toast {
+    background: var(--card-bg);
+    color: var(--text-primary);
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    animation: slideIn 0.3s ease-out;
+    min-width: 200px;
+    border-left: 4px solid var(--info);
+}
+
+.toast.success {
+    border-left-color: var(--success);
+}
+
+.toast.error {
+    border-left-color: var(--danger);
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+footer {
+    text-align: center;
+    padding: 1.5rem;
+    color: var(--secondary);
+    font-size: 0.85rem;
+    margin-top: 2rem;
+}
+
+/* Responsive Design */
+@media (min-width: 1024px) {
+    main {
+        grid-template-columns: 1fr auto;
+        align-items: flex-start;
+    }
+}
+
+@media (max-width: 1024px) {
+    main {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    header {
+        padding: 1.5rem;
+    }
+
+    header h1 {
+        font-size: 1.25rem;
+    }
+
+    .control-panel {
+        padding: 1rem;
+        max-width: 100%;
+    }
+
+    .upload-area {
+        padding: 1.5rem;
+    }
+
+    #editor-canvas {
+        max-height: 50vh;
+    }
+
+    .filter-buttons, .transform-buttons, .action-buttons {
+        grid-template-columns: 1fr;
+    }
+}
