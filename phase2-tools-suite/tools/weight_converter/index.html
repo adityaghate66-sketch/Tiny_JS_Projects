@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weight Converter | Phase 2 Tools</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #a5f3fc 0%, #e0f2fe 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+        }
+        .tool-container {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            max-width: 400px;
+            width: 90%;
+        }
+        h2 {
+            color: #0891b2;
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+        .form-group {
+            margin-bottom: 1rem;
+        }
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: #333;
+        }
+        input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+        input:focus {
+            outline: none;
+            border-color: #0891b2;
+        }
+        select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            font-size: 1rem;
+            background: white;
+            cursor: pointer;
+            transition: border-color 0.3s;
+        }
+        .unit-row {
+            display: flex;
+            gap: 1rem;
+        }
+        .unit-row input {
+            flex: 1;
+            padding: 0.75rem;
+        }
+        .unit-row select {
+            padding: 0.75rem;
+            width: auto;
+        }
+        .actions {
+            margin: 1.5rem 0;
+        }
+        .btn {
+            width: 100%;
+            padding: 0.75rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: transform 0.2s;
+        }
+        .btn:active {
+            transform: scale(0.97);
+        }
+        .calculate {
+            background: #0891b2;
+            color: white;
+        }
+        .calculate:hover {
+            background: #0e7490;
+        }
+        .back-btn {
+            text-align: center;
+            background: #10b981;
+            color: white;
+        }
+        .back-btn:hover {
+            background: #059669;
+        }
+        .result-box {
+            margin-top: 1.5rem;
+            padding: 1rem;
+            background: #f0fdfa;
+            border-radius: 8px;
+            border-left: 4px solid #0d9488;
+        }
+        .result-label {
+            font-weight: 600;
+            color: #134e4a;
+            margin-bottom: 0.5rem;
+        }
+        .result-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #134e4a;
+        }
+    </style>
+</head>
+<body>
+    <div class="tool-container">
+        <h2>⚖️ Weight Converter</h2>
+        <div class="inputs">
+            <div class="unit-row">
+                <input type="number" id="input_value" data-field="input_value" placeholder="Enter value" step="any">
+                <select id="from_unit" data-field="from_unit">
+                    <option value="kilograms">Kg</option>
+                    <option value="grams">g</option>
+                    <option value="pounds">Lbs</option>
+                    <option value="ounces">oz</option>
+                </select>
+            </div>
+            <div class="unit-row">
+                <input type="number" id="output_value" data-field="output_value" readonly>
+                <select id="to_unit" data-field="to_unit">
+                    <option value="kilograms">Kg</option>
+                    <option value="grams">g</option>
+                    <option value="pounds">Lbs</option>
+                    <option value="ounces">oz</option>
+                </select>
+            </div>
+        </div>
+        <div class="actions">
+            <button class="btn calculate">Convert</button>
+            <a href="../index.html" class="btn back-btn">← Back</a>
+        </div>
+        <div class="result-box"></div>
+    </div>
+
+    <script type="module" src="script.js"></script>
+</body>
+</html>
